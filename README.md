@@ -104,4 +104,54 @@ Using these price prediction datasets, a user can predict the price of a house a
 • https://www.kaggle.com/code/shreayan98c/boston-house-price-prediction#Random-Forest-Regressor
 • https://www.geeksforgeeks.org/flask-creating-first-simple-application/#:~:text=Flask%20is%20a%20web%20application,to%20set%20up%20your%20environment
 
+## 2. California Housing Prices
+In this exercise, I used a dataset from Kaggle.
+
+Dataset: Housing.csv (Attaching this in the folder)
+
+Colab Link:
+https://colab.research.google.com/drive/1aN_lm8wGU8WVFe9_gHqbwfNPY_0kmsEV?usp=sharing
+
+### Aim 
+Unlike the Boston Housing Dataset, which was easy because, the data was neatly organized. So, we wanted to gain some experience around working with datasets we have to perform some exploratory data analysis, update the data according to the requirement.
+
+### Steps Carried Out
+• Loading the Dataset
+• Performing Exploratory Data Analysis (EDA)
+• Training the Model
+
+Loading the Dataset: As this dataset is a .csv file, to get that data, we need to use a pandas function read_csv and then load the dataset.
+
+Performing EDA: First, when we print the dataset, it looked like this.
+
+![1](secondpredictionsnippets/1.jpg)
+
+Here, if you take a look at the columns: mainroad, guestroom, basement, hotwaterheating, airconditioning, perfarea and furnishingstatus. They are given as a string.
+
+I want to change them to integers. So, I changed them as shown below and now take a look at the dataset after performing changes.
+
+![2](secondpredictionsnippets/2.jpg)
+
+Using some basic commands, retrieved some more information about the dataset and plotted some graphs, to better understand, how is the price changing with respect to either guestrooms/bedrooms/bathrooms.
+
+You can take a look at all of this information from the above attached colab link.
+
+Now, with the dataset that we have, we did data splitting first and then we used 3 models to train this dataset.
+
+Algorithms used:
+• Linear Regression
+• Decision Tree Regression
+• Forest Tree Regression
+
+Using these algorithms, we created and trained a model, and retrieved some metrics.
+
+To obtain the best model, calculate the RMSE for all the models.
+
+Out of all the models, linear regression is the best model as it has a low RMSE.
+
+![3](secondpredictionsnippets/3.jpg)
+
+### Conclusion
+This has been done to mention that Exploratory Data Analysis is a crucial part in the data mining. Once you understand how you want your data to be plotted/organized. It becomes really easy to work on, as you eliminate all of the unnecessary data.
+
 
