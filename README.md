@@ -154,4 +154,132 @@ Out of all the models, linear regression is the best model as it has a low RMSE.
 ### Conclusion
 This has been done to mention that Exploratory Data Analysis is a crucial part in the data mining. Once you understand how you want your data to be plotted/organized. It becomes really easy to work on, as you eliminate all of the unnecessary data.
 
+## 3. Redfin Marketing Data
+This exercise is to play with latest and huge amounts of data obtained from the Redfin official website.
 
+### Aim
+This activity is performed to analyze when is the good time to buy or sell a house and observing the factors affecting the prices. Redfin provides consolidated nationwide to zip code level housing market data and is used to effectively visualize the information using this dataset. The housing market report will leverage selling price, sold homes, listings, market days, and price drops present in the redfin dataset. The data is computed over a 12-week period and updated once a week.
+
+### Steps Carried Out
+Imported required libraries to access the redfin data and displaying it.
+
+![1](thirdpredictionsnippets/1.jpg)
+
+We can directly download by passing this URL 
+
+url = 'https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz'
+
+But there was an error saying, the data is very huge and a powerful machine is required to obtain that data. Hence, manually, downloaded the dataset from that website and uploaded it to google drive and accessed it from there.
+
+![2](thirdpredictionsnippets/2.jpg)
+
+If you take a look at the output here, there are about 6M rows in this dataset. That is huge.
+
+### Significance of each column in the dataset
+median_sale_price: The final home sale price covering all homes with a sale date during a given time period where 50% of the sales were above this price and 50% were below this price.
+
+median_list_price: The most recent listing price covering all homes with a listing date during a given time period where 50% of the active listings were above this price and 50% were below this price.
+
+median_ppsf: The median list price per square foot of all active listings.
+
+homes_sold: Total number of homes with a sale date during a given time period.
+
+pending_sales: Total homes that went under contract during the period. Excludes homes that were on the market longer than 90 days.
+
+new_listings: Total number of homes with a listing added date during a given time period.
+
+inventory: Total number of active listings on the last day a given time period.
+
+months_of_supply: When data are monthly, it is inventory divided by home sales. This tells you how long it would take supply to be bought up if no new homes came on the market.
+
+median_dom: The number of days between the date the home was listed for sale and when the home went off-market/pending sale covering all homes with an off-market date during a given time period where 50% of the off-market homes sat longer on the market and 50% went off the market faster. Excludes homes that sat on the market for more than 1 year.
+
+avg_sale_to_list: The mean ratio of each homes sale price divided by their list price covering all homes with a sale date during a given time period. Excludes properties with a sale price 50%.
+
+sold_above_list: The percent of homes sales with a sale price greater than their latest list price covering all homes with a sale date during a given time period. Excludes properties with a sale price 50% above the listing price or with a sale price 50% below the list price.
+
+price_drops: How many listings dropped their price in a given time period.
+
+off_market_in_two_weeks: The total number of homes that went under contract within two weeks of their listing date.
+
+Filtering only Florida data for analysis purposes and later will be expanded to the entire dataset.
+
+![3](thirdpredictionsnippets/3.jpg)
+
+Pulling in the geography dataset to map the location and data
+
+![4](thirdpredictionsnippets/4.jpg)
+
+Filtering geography dataset to include only 5 counties in Florida
+
+![5](thirdpredictionsnippets/5.jpg)
+
+Cleaning the dataset to remove the invalid zip codes
+
+![6](thirdpredictionsnippets/6.jpg)
+
+Filtering the dataset to single zip code and property type
+
+![7](thirdpredictionsnippets/7.jpg)
+
+Recalculating median_dom_mom
+
+![8](thirdpredictionsnippets/8.jpg)
+
+![9](thirdpredictionsnippets/9.jpg)
+
+![10](thirdpredictionsnippets/10.jpg)
+
+Downloading the dataset to visualize it in tableau dashboard
+
+![11](thirdpredictionsnippets/11.jpg)
+
+The output of this colab notebook is a new csv file, which we will be using further for visualizations in the tableau dashboard, here the data is specific to florida and as shown in the above steps.
+
+### Visualizations
+Dashboard link: https://10az.online.tableau.com/t/255finalproject/authoring/255_final_project/Dashboard2#2
+
+First, create an account on tableau. We have used this platform for visualizing the data from the above downloaded csv file. You can customize as per your requirement. It is easy to assemble and It gives a good idea on the performance of the metrics. The main motto was, making these metrics available to a user will give much better idea/understanding for a user. We consider it is an important parameter i.e., having/looking at more information, gives a better picture. A user will get clarity on whether to go ahead or not and can make better choices.
+
+Attaching the snippet of how the overall dashboard looks like:
+
+![12](thirdpredictionsnippets/12.jpg)
+
+Here, the main advantage is, a user has various options to choose. On the right side, there are filters as you can see. It is user’s choice to select what they want and the data will be displayed according to the filters applied.
+
+This Dataset has been used effectively in a tableau dashboard and can cater to the user's needs by providing the required information in visualized format. The user can filter data according to the city, property type, county, zipcode, time period.
+
+![13](thirdpredictionsnippets/13.jpg)
+
+![14](thirdpredictionsnippets/14.jpg)
+
+Median DOM is the number of days between the date the home was listed for sale and when the home went off-market/pending sale covering all homes with an off-market date during a given time period where 50% of the off-market homes sat longer on the market and 50% went off the market faster. Excludes homes that sat on the market for more than 1 year.
+
+The user can use this information to assess the buffer period to make his decision from the time the property is listed for sale.
+
+![15](thirdpredictionsnippets/15.jpg)
+
+This graph shows the total number of active listings on the last day of a given time period for each property listing.
+
+![16](thirdpredictionsnippets/16.jpg)
+
+The left graph median_list_price is the most recent listing price covering all homes with a listing date during a given time period where 50% of the active listings were above this price and 50% were below this price and the right part of the graph median_ppsf is the median list price per square foot of all active listings.
+
+![17](thirdpredictionsnippets/17.jpg)
+
+![18](thirdpredictionsnippets/18.jpg)
+
+Through these graphs the buyer can estimate if there will be further listing of houses and if so will the house prices increase or decrease.
+
+Colab Link:
+https://colab.research.google.com/drive/1kVOI3qajzpY2JcZOmwkh2998prI6VYj6?usp=sharing
+
+### Conclusion
+Working with such huge data gives more insights and tableau dashboard has helped in plotting the data very smoothly. This process has been experimented on zipcode data, but there is data available with other parameters. Tableau is a really good platform for visualizations, as a user has various options to choose from and can plot as we wish.
+
+### References
+• https://www.redfin.com/news/data-center/
+• https://levelup.gitconnected.com/how-to-get-data-on-the-housing-market-using-python-603317f9291a
+
+### Future Scope
+To integrate the dashboard with the website. Hence, it will be available for the user to obtain information according to their needs.
